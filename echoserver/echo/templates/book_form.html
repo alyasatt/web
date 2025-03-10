@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if book %}Редактировать{% else %}Добавить{% endif %} книгу</title>
+</head>
+<body>
+    <h1>{% if book %}Редактировать{% else %}Добавить{% endif %} книгу</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <br>
+    <a href="{% url 'book_list' %}">Назад к списку</a>
+</body>
+</html>

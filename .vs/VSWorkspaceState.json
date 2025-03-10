@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.venv",
+    "\\echoserver",
+    "\\echoserver\\echo",
+    "\\echoserver\\echoserver"
+  ],
+  "SelectedNode": "\\echoserver\\echo\\templates",
+  "PreviewInSolutionExplorer": false
+}
