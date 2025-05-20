@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои заказы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .order {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .order h2 {
+            margin-top: 0;
+        }
+        .order-items {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Мои заказы</h1>
+
+{% if orders %}
+    {% for order in orders %}
+        <div class="order">
+            <h2>Заказ от {{ order.created_at|date:"d.m.Y H:i" }}</h2>
+            <div class="order-items">
+                <ul>
+                    {% for item in order.items.all %}
+                        <li>{{ item.book.name }} — {{ item.quantity }} шт. ({{ item.total_price }} руб.)</li>
+                    {% endfor %}
+                </ul>
+                <strong>Итого: {{ order.total_price }} руб.</strong>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>У вас пока нет заказов.</p>
+{% endif %}
+
+<br>
+<a href="{% url 'book_list' %}">← Вернуться к списку книг</a>
+
+</body>
+</html>
